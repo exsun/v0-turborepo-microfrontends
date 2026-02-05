@@ -7,11 +7,20 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "turbo:dev": "turbo dev",
     "turbo:build": "turbo build",
+    "turbo:lint": "turbo lint",
+    "turbo:typecheck": "turbo typecheck",
+    "build:production": "NODE_ENV=production turbo build",
     "dev:shell": "turbo dev --filter=shell",
     "dev:dashboard": "turbo dev --filter=dashboard",
-    "dev:store": "turbo dev --filter=store"
+    "dev:store": "turbo dev --filter=store",
+    "build:shell": "turbo build --filter=shell",
+    "build:dashboard": "turbo build --filter=dashboard",
+    "build:store": "turbo build --filter=store",
+    "clean": "turbo clean && rm -rf node_modules",
+    "clean:turbo": "turbo clean"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
