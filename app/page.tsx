@@ -85,7 +85,7 @@ export default function ShellPage() {
           </div>
         </section>
 
-        <section>
+        <section className="mb-8">
           <h2 className="text-xl font-semibold mb-4">Architecture Overview</h2>
           <Card>
             <CardContent className="pt-6">
@@ -107,6 +107,40 @@ export default function ShellPage() {
                   <h3 className="font-semibold">store</h3>
                   <p className="text-sm text-muted-foreground mt-1">Port 3002</p>
                   <p className="text-sm text-muted-foreground">Base: /store</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Production Deployment</h2>
+          <Card>
+            <CardContent className="pt-6 space-y-4">
+              <div>
+                <h3 className="font-medium mb-2">Environment Variables</h3>
+                <div className="rounded-lg bg-muted p-4 font-mono text-sm space-y-1">
+                  <p>NEXT_PUBLIC_SHELL_URL=https://your-app.vercel.app</p>
+                  <p>NEXT_PUBLIC_DASHBOARD_URL=https://your-dashboard.vercel.app</p>
+                  <p>NEXT_PUBLIC_STORE_URL=https://your-store.vercel.app</p>
+                </div>
+              </div>
+              <div>
+                <h3 className="font-medium mb-2">Build Commands</h3>
+                <div className="rounded-lg bg-muted p-4 font-mono text-sm space-y-1">
+                  <p className="text-muted-foreground"># Build all apps</p>
+                  <p>pnpm turbo:build</p>
+                  <p className="text-muted-foreground mt-2"># Build for production</p>
+                  <p>pnpm build:production</p>
+                </div>
+              </div>
+              <div>
+                <h3 className="font-medium mb-2">Files Configured</h3>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">vercel.json</Badge>
+                  <Badge variant="outline">turbo.json</Badge>
+                  <Badge variant="outline">microfrontends.json</Badge>
+                  <Badge variant="outline">.env.example</Badge>
                 </div>
               </div>
             </CardContent>

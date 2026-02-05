@@ -6,12 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
-    "turbo:dev": "turbo dev",
-    "turbo:build": "turbo build",
-    "dev:shell": "turbo dev --filter=shell",
-    "dev:dashboard": "turbo dev --filter=dashboard",
-    "dev:store": "turbo dev --filter=store"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -60,7 +55,6 @@
     "recharts": "2.15.0",
     "sonner": "^1.7.1",
     "tailwind-merge": "^2.5.5",
-    "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2",
     "zod": "^3.24.1"
   },
@@ -70,7 +64,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "postcss": "^8.5",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^4.1.13",
     "typescript": "5.7.3"
   }
 }
