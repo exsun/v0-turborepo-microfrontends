@@ -1,7 +1,10 @@
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { LayoutDashboard, ShoppingBag, Home } from "lucide-react"
+import { LayoutDashboard, ShoppingBag, Home, CheckCircle2, Circle } from "lucide-react"
+
+const isProduction = process.env.NODE_ENV === "production"
+const vercelEnv = process.env.VERCEL_ENV || "development"
 
 export default function ShellPage() {
   return (
@@ -26,7 +29,13 @@ export default function ShellPage() {
             <ShoppingBag className="h-4 w-4" />
             Store
           </Link>
-          <Badge variant="outline" className="ml-auto">Host App - Port 3000</Badge>
+          <div className="ml-auto flex items-center gap-2">
+            <Badge variant={isProduction ? "default" : "secondary"} className="flex items-center gap-1">
+              {isProduction ? <CheckCircle2 className="h-3 w-3" /> : <Circle className="h-3 w-3" />}
+              {vercelEnv}
+            </Badge>
+            <Badge variant="outline">Shell Host</Badge>
+          </div>
         </div>
       </nav>
 
@@ -115,32 +124,75 @@ export default function ShellPage() {
 
         <section>
           <h2 className="text-xl font-semibold mb-4">Production Deployment</h2>
-          <Card>
-            <CardContent className="pt-6 space-y-4">
-              <div>
-                <h3 className="font-medium mb-2">Environment Variables</h3>
-                <div className="rounded-lg bg-muted p-4 font-mono text-sm space-y-1">
-                  <p>NEXT_PUBLIC_SHELL_URL=https://your-app.vercel.app</p>
-                  <p>NEXT_PUBLIC_DASHBOARD_URL=https://your-dashboard.vercel.app</p>
-                  <p>NEXT_PUBLIC_STORE_URL=https://your-store.vercel.app</p>
+          <div className="grid gap-6 md:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-base">Environment Variables</CardTitle>
+                <CardDescription>Set in Vercel Project Settings</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="rounded-lg bg-muted p-4 font-mono text-xs space-y-2">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-3 w-3 text-green-500 shrink-0" />
+                    <span>NEXT_PUBLIC_SHELL_URL</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-3 w-3 text-green-500 shrink-0" />
+                    <span>NEXT_PUBLIC_DASHBOARD_URL</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-3 w-3 text-green-500 shrink-0" />
+                    <span>NEXT_PUBLIC_STORE_URL</span>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <h3 className="font-medium mb-2">Build Commands</h3>
-                <div className="rounded-lg bg-muted p-4 font-mono text-sm space-y-1">
-                  <p className="text-muted-foreground"># Build all apps</p>
-                  <p>pnpm turbo:build</p>
-                  <p className="text-muted-foreground mt-2"># Build for production</p>
-                  <p>pnpm build:production</p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-base">Production Files</CardTitle>
+                <CardDescription>Configuration ready for deployment</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="font-mono">vercel.json</span>
+                    <Badge variant="outline" className="text-xs">Security headers</Badge>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="font-mono">turbo.json</span>
+                    <Badge variant="outline" className="text-xs">Build pipeline</Badge>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="font-mono">microfrontends.json</span>
+                    <Badge variant="outline" className="text-xs">App routing</Badge>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="font-mono">.env.example</span>
+                    <Badge variant="outline" className="text-xs">Env template</Badge>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <h3 className="font-medium mb-2">Files Configured</h3>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">vercel.json</Badge>
-                  <Badge variant="outline">turbo.json</Badge>
-                  <Badge variant="outline">microfrontends.json</Badge>
-                  <Badge variant="outline">.env.example</Badge>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card className="mt-6">
+            <CardHeader>
+              <CardTitle className="text-base">Deploy to Vercel</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-4 md:grid-cols-3 text-sm">
+                <div className="p-3 rounded-lg border">
+                  <p className="font-medium mb-1">1. Connect Repo</p>
+                  <p className="text-muted-foreground text-xs">Link your GitHub repository to Vercel</p>
+                </div>
+                <div className="p-3 rounded-lg border">
+                  <p className="font-medium mb-1">2. Set Env Variables</p>
+                  <p className="text-muted-foreground text-xs">Add production URLs in project settings</p>
+                </div>
+                <div className="p-3 rounded-lg border">
+                  <p className="font-medium mb-1">3. Deploy</p>
+                  <p className="text-muted-foreground text-xs">Vercel auto-detects Turborepo</p>
                 </div>
               </div>
             </CardContent>

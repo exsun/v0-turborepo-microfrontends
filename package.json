@@ -6,8 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit",
+    "turbo:dev": "turbo dev",
+    "turbo:build": "turbo build",
+    "turbo:lint": "turbo lint",
+    "dev:shell": "turbo dev --filter=shell",
+    "dev:dashboard": "turbo dev --filter=dashboard",
+    "dev:store": "turbo dev --filter=store",
+    "build:shell": "turbo build --filter=shell",
+    "build:dashboard": "turbo build --filter=dashboard",
+    "build:store": "turbo build --filter=store"
   },
+  "devDependencies": {
+    "turbo": "^2.3.0",
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-accordion": "1.2.2",
