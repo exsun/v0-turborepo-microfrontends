@@ -3,15 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "turbo dev",
-    "build": "turbo build",
-    "lint": "turbo lint",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "turbo:dev": "turbo dev",
+    "turbo:build": "turbo build",
     "dev:shell": "turbo dev --filter=shell",
     "dev:dashboard": "turbo dev --filter=dashboard",
     "dev:store": "turbo dev --filter=store"
-  },
-  "devDependencies": {
-    "turbo": "^2.3.0"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
