@@ -1,23 +1,13 @@
 {
-  "name": "my-turborepo",
+  "name": "my-turborepo-microfrontends",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "type-check": "tsc --noEmit",
-    "turbo:dev": "turbo dev",
-    "turbo:build": "turbo build",
-    "turbo:lint": "turbo lint",
-    "dev:shell": "turbo dev --filter=shell",
-    "dev:dashboard": "turbo dev --filter=dashboard",
-    "dev:store": "turbo dev --filter=store",
-    "build:shell": "turbo build --filter=shell",
-    "build:dashboard": "turbo build --filter=dashboard",
-    "build:store": "turbo build --filter=store"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -70,7 +60,6 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "turbo": "^2.3.0",
     "@tailwindcss/postcss": "^4.1.13",
     "@types/node": "^22",
     "@types/react": "^19",
